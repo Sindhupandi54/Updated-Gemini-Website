@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threads & Hues</title>
+    <style>
+                body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #f9f4f4;
+            padding: 20px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        header nav {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        header nav li {
+            margin-right: 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product-tile {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product-tile img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-tile p {
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        footer form h3 {
+            margin-bottom: 10px;
+        }
+
+        footer form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+
+        footer form button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 10px;
+        }
+
+        footer ul li h3 {
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Threads & Hues</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="product-grid">
+            <div id="product-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; Threads & Hues 2024</p>
+            <form>
+                <h2>Stay Updated</h2>
+                <p>Sign up for our newsletter to receive exclusive offers and new arrivals.</p>
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+            <ul>
+                <li><h3>About Us</h3></li>
+                <li><h3>Contact Us</h3></li>
+                <li><h3>Help</h3></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Function to display product tiles with image and details
+        function displayProducts(products) {
+            const productContainer = document.getElementById("product-container");
+            productContainer.innerHTML = ""; // Clear existing content
+
+            products.forEach(product => {
+                const productTile = document.createElement("div");
+                productTile.classList.add("product-tile");
+
+                const productImage = document.createElement("img");
+                productImage.src = product.imageUrl; // Replace with your image path
+                // Add alternative text for each image
+                productImage.alt = `A product image of ${product.title}`; // Replace with a more descriptive text
+
+                const productTitle = document.createElement("p");
+                productTitle.textContent = product.title;
+
+                const productPrice = document.createElement("p");
+                productPrice.textContent = `$${product.price}`;
+
+                productTile.appendChild(productImage);
+                productTile.appendChild(productTitle);
+                productTile.appendChild(productPrice);
+
+                productContainer.appendChild(productTile);
+            });
+        }
+
+        // Replace this with your actual product data (image URL, title, price)
+        const products = [
+            { imageUrl: "image1.jpg", title: "Striped T-Shirt", price: 29.99 },
+            { imageUrl: "image2.jpg", title: "Floral Dress", price: 49.99 },
+            { imageUrl: "image3.jpg", title: "Denim Jacket", price: 79.99 },
+            { imageUrl: "image4.jpg", title: "Stylish Sneakers", price: 59.99 },
+            { imageUrl: "image5.jpg", title: "Cozy Hoodie", price: 39.99 },
+            { imageUrl: "image6.jpg", title: "Chic Bag", price: 69.99 },
+        ];
+
+        displayProducts(products);
+    </script>
+</body>
+</html>
